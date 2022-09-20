@@ -29,10 +29,11 @@ include('nav.html');
 </style>
 
   <?php
-$servername = '127.0.0.1:3307';
-$username = 'root';
+//       here, details such servername, username, password and database has been left as per the requirenment
+$servername = '';
+$username = '';
 $password = '';
-$database = 'bank';
+$database = '';
 
 $conn = mysqli_connect($servername, $username, $password, $database);
 
