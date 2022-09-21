@@ -45,6 +45,24 @@ include('nav.html');
         $database = '';
         $conn = mysqli_connect($servername, $username, $password, $database);
         
+        
+        // verify the account numbers
+        $check_sender = "SELECT * FROM `customer` WHERE `account`= '$sender'";
+        $result = mysqli_query($conn, $check_sender);
+        $row_sender = mysqli_num_rows($result);
+        
+        $check_receiver = "SELECT * FROM `customer` WHERE `account`='$receiver'";
+        $result = mysqli_query($conn, $check_receiver);
+        $row_receiver = mysqli_num_rows($result);
+        
+      
+
+        if (($row_sender==0) || ($row_receiver==0)) {
+            echo '<div class="alert alert-danger" role="alert">
+                <a href="#" class="alert-link">Please Enter Valid credentials!</a>.</div>';
+        }
+                else{
+        
        
         $sql = "SELECT `balance` FROM `customer` WHERE `account`='$sender'";
         $result = mysqli_query($conn, $sql);
@@ -96,7 +114,7 @@ include('nav.html');
             Insufficient balance!<a href="#" class="alert-link">Failed</a>.</div>';
         }
     }
-          
+    }       
     
 
     ?>
